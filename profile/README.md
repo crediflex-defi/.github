@@ -1,5 +1,4 @@
-# Crediflex 
-## Undercollaterallized Lending Platform
+# Crediflex: Undercollateralized Lending Platform
 
 <!--
 
