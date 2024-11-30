@@ -17,26 +17,53 @@ This restrictive model limits capital efficiency and discourages broader adoptio
 
 Crediflex addresses this issue with an **undercollateralized approach**, allowing users to borrow assets with collateral worth less than the borrowed amount. The key innovation lies in the integration of **on-chain credit scoring** to determine dynamic loan-to-value (LTV) ratios. 
 
-- **Dynamic LTV Calculation**: Crediflex calculates LTV based on a user’s credit score (C Score), reflecting their on-chain activities. 
-- **C Score-Driven Lending**: A higher C Score enables users to borrow more assets relative to their collateral.
+---
+
+## What is Crediflex?
+
+Crediflex is an undercollateralized lending protocol that leverages **AVS (Actively Validated Service)** with **EigenLayer middleware** to verify credit scoring and **zkTLS** to fetch proofed data for calculating C Score parameters. 
+
+- The **C Score** dynamically determines Loan-to-Value (LTV) ratios, enabling users to borrow more than their collateral based on their on-chain activities.
+- For the hackathon, users deposit **mock WETH** as collateral and borrow **mock USDe** as the asset, with borrowing limits calculated using four key parameters:
+  1. **Wallet Age**: How long the wallet has been active.
+  2. **Token Holding Diversity**: Number of unique tokens worth more than $1 held.
+  3. **Total Transactions**: How many transactions the wallet has performed.
+  4. **Multi-Chain Activities**: Number of distinct blockchains the wallet has interacted with.
+
+This implementation showcases **secure data handling**, **efficient scoring**, and practical lending mechanics for DeFi.
+
+---
+
+## Deployment
+
+Crediflex is deployed on the **Arbitrum-Sepolia testnet**, while the credit scoring parameters are derived from **Arbitrum Mainnet activity**. This approach ensures realistic data is used for parameter calculation while maintaining a test environment for rapid development and validation.
+
+---
+
+## Links
+
+- **Demo Application**: [Loom Video](https://www.loom.com/share/f2f07bec1d7f4a16a265d5c2e15b4fd5?sid=6b59d2d7-8cec-4437-b5a9-5837ee9344db)
+- **Presentation**: [Google Slides](https://docs.google.com/presentation/d/1jzdRC5VvygoHkkKyZcC22kcvkAqC7YxsAfnADTBuLmU/edit#slide=id.g1f1ce5643d3_0_0)
+- **Web App**: [Crediflex App](https://crediflex.vercel.app/)
 
 ---
 
 ## Credit Scoring (C Score)
 
-The **C Score** is a unique metric that evaluates a user’s on-chain activity using specific parameters. While there are plans to integrate many parameters in the future, the hackathon version of Crediflex uses the following **four parameters**:
+The **C Score** is a unique metric that evaluates a user’s on-chain activity using specific parameters. While there are plans to integrate many parameters in the future, the hackathon version of Crediflex uses the four parameters mentioned above.
 
-1. **Wallet Age**: How long the wallet has been active.
-2. **Token Holding Diversity**: Number of unique tokens worth more than $1 held by the wallet.
-3. **Total Transactions**: Total count of transactions performed by the wallet.
-4. **Multi-Chain Activities**: Number of distinct blockchains the wallet has interacted with.
+---
 
-### Why These Parameters?
-These parameters are chosen because:
-- **Wallet Age**: Reflects the longevity and commitment of the user in the blockchain ecosystem.
-- **Token Holding Diversity**: Indicates the user’s financial behavior and diversification.
-- **Total Transactions**: Demonstrates the user’s engagement and activity level on the blockchain.
-- **Multi-Chain Activities**: Shows the user’s participation across different blockchain ecosystems, reflecting versatility.
+### AVS and zkTLS in Action
+
+1. **AVS (Actively Validated Service)**:
+   - AVS is a system for managing credit scoring requests.
+   - It uses **EigenLayer middleware** to verify credit scoring tasks securely.
+   - Ensures trust and validation for off-chain processes by enabling on-chain verification of fetched data and calculated scores.
+
+2. **zkTLS**:
+   - zkTLS ensures that data fetched from HTTPS endpoints is proofed and verifiable, preventing tampering during the data-fetching process.
+   - This technology adds an extra layer of trust to the **C Score** generation workflow by ensuring accurate and secure data for credit scoring.
 
 ---
 
@@ -46,17 +73,17 @@ These parameters are chosen because:
 1. The user requests a **C Score** by interacting with the **AVS contract**.
 2. The AVS contract creates a task for credit scoring.
 3. An **Operator** monitors and picks up the task.
-4. The Operator fetches remote data over HTTPS endpoints (secured with zkTLS), providing verifiable proof of execution.
+4. The Operator fetches remote data over HTTPS endpoints (secured with **zkTLS**) to ensure proof of correct data fetching and integrity.
 5. The fetched data is processed to calculate the C Score based on the defined parameters.
-6. The calculated C Score is signed, verified, and sent back to the AVS contract.
+6. The calculated C Score is signed, verified using EigenLayer middleware, and sent back to the AVS contract.
 
 **Note**: The C Score remains valid for **120 days** (approximately 4 months). After this period, users must request a new C Score to ensure it reflects the latest on-chain activity.
 
 ---
 
 ### Lending Workflow
-1. Users deposit collateral (e.g., **WETH**) into the protocol.
-2. Users can borrow assets (e.g., **USDe**) based on the dynamic LTV determined by their C Score.
+1. Users deposit collateral (e.g., **mock WETH**) into the protocol.
+2. Users can borrow assets (e.g., **mock USDe**) based on the dynamic LTV determined by their C Score.
 
 ---
 
@@ -72,10 +99,13 @@ These parameters are chosen because:
 
 ---
 
-## Deployment
+## Technology Stack
 
-### Web Application
-Access the Crediflex web interface: [https://crediflex.vercel.app/](https://crediflex.vercel.app/)
+- **AVS (Actively Validated Service)**: Manages credit scoring requests and verifies responses using middleware for task validation.
+- **zkTLS**: Ensures data fetched from HTTPS endpoints is verifiable and tamper-proof.
+- **EigenLayer Middleware**: Provides secure and trustless task verification for C Score calculations.
+- **Mock Contracts**: Simulated **USDe** and **WETH** contracts for testing borrowing and collateral features.
+- **Arbitrum-Sepolia Testnet**: Deployment environment for contracts and protocol validation.
 
 ---
 
