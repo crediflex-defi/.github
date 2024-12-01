@@ -7,6 +7,7 @@
 ## Problem Statement
 
 Traditional lending protocols in DeFi face a significant limitation:
+
 - **Overcollateralization Requirement**: Users must deposit more collateral than the amount they intend to borrow.
 
 This restrictive model limits capital efficiency and discourages broader adoption of lending platforms.
@@ -15,13 +16,13 @@ This restrictive model limits capital efficiency and discourages broader adoptio
 
 ## Proposed Solution
 
-Crediflex addresses this issue with an **undercollateralized approach**, allowing users to borrow assets with collateral worth less than the borrowed amount. The key innovation lies in the integration of **on-chain credit scoring** to determine dynamic loan-to-value (LTV) ratios. 
+Crediflex addresses this issue with an **undercollateralized approach**, allowing users to borrow assets with collateral worth less than the borrowed amount. The key innovation lies in the integration of **on-chain credit scoring** to determine dynamic loan-to-value (LTV) ratios.
 
 ---
 
 ## What is Crediflex?
 
-Crediflex is an undercollateralized lending protocol that leverages **AVS (Actively Validated Service)** with **EigenLayer middleware** to verify credit scoring and **zkTLS** to fetch proofed data for calculating C Score parameters. 
+Crediflex is an undercollateralized lending protocol that leverages **AVS (Actively Validated Service)** with **EigenLayer middleware** to verify credit scoring and **zkTLS** to fetch proofed data for calculating C Score parameters.
 
 - The **C Score** dynamically determines Loan-to-Value (LTV) ratios, enabling users to borrow more than their collateral based on their on-chain activities.
 - For the hackathon, users deposit **mock WETH** as collateral and borrow **mock USDe** as the asset, with borrowing limits calculated using four key parameters:
@@ -46,6 +47,9 @@ Crediflex is deployed on the **Arbitrum-Sepolia testnet**, while the credit scor
 - **Presentation**: [Google Slides](https://docs.google.com/presentation/d/1jzdRC5VvygoHkkKyZcC22kcvkAqC7YxsAfnADTBuLmU/edit#slide=id.g1f1ce5643d3_0_0)
 - **Web App**: [Crediflex App](https://crediflex.vercel.app/)
 
+![Home - Crediflex Home](./public/crediflex-home.png)
+![Dashboard - Crediflex Dashboard](./public/crediflex-dashboard.png)
+
 ---
 
 ## Credit Scoring (C Score)
@@ -57,6 +61,7 @@ The **C Score** is a unique metric that evaluates a user’s on-chain activity u
 ### AVS and zkTLS in Action
 
 1. **AVS (Actively Validated Service)**:
+
    - AVS is a system for managing credit scoring requests.
    - It uses **EigenLayer middleware** to verify credit scoring tasks securely.
    - Ensures trust and validation for off-chain processes by enabling on-chain verification of fetched data and calculated scores.
@@ -70,6 +75,7 @@ The **C Score** is a unique metric that evaluates a user’s on-chain activity u
 ## Workflow
 
 ### Credit Scoring Workflow
+
 1. The user requests a **C Score** by interacting with the **AVS contract**.
 2. The AVS contract creates a task for credit scoring.
 3. An **Operator** monitors and picks up the task.
@@ -82,6 +88,7 @@ The **C Score** is a unique metric that evaluates a user’s on-chain activity u
 ---
 
 ### Lending Workflow
+
 1. Users deposit collateral (e.g., **mock WETH**) into the protocol.
 2. Users can borrow assets (e.g., **mock USDe**) based on the dynamic LTV determined by their C Score.
 
@@ -128,6 +135,7 @@ The **C Score** is a unique metric that evaluates a user’s on-chain activity u
 ---
 
 ## License
+
 MIT License
 
 ---
