@@ -45,7 +45,7 @@ Crediflex is deployed on the **Arbitrum-Sepolia testnet**, while the credit scor
 
 - **Demo Application**: [Loom Video](https://www.loom.com/share/f2f07bec1d7f4a16a265d5c2e15b4fd5?sid=6b59d2d7-8cec-4437-b5a9-5837ee9344db)
 - **Presentation**: [Google Slides](https://docs.google.com/presentation/d/1jzdRC5VvygoHkkKyZcC22kcvkAqC7YxsAfnADTBuLmU/edit#slide=id.g1f1ce5643d3_0_0)
-- **Web App**: [Crediflex App](https://crediflex.vercel.app/)
+- **Web App**: [Crediflex App](https://crediflex-fi.vercel.app/)
 
 ![Home - Crediflex Home](./public/crediflex-home.png)
 ![Dashboard - Crediflex Dashboard](./public/crediflex-dashboard.png)
